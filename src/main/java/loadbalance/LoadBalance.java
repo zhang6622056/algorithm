@@ -12,5 +12,5 @@ public interface LoadBalance {
      * *@param: list
      * @return loadbalance.ServerHost
      */
-    ServerHost select(List<ServerHost> list);
+    ServerHost select(List<ServerHost> list,InvocationClient invocationClient);
 }

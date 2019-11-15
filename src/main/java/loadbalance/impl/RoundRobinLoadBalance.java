@@ -1,6 +1,7 @@
 package loadbalance.impl;
 
 
+import loadbalance.InvocationClient;
 import loadbalance.LoadBalance;
 import loadbalance.ServerHost;
 
@@ -32,7 +33,7 @@ public class RoundRobinLoadBalance implements LoadBalance {
 
 
     @Override
-    public ServerHost select(List<ServerHost> list) {
+    public ServerHost select(List<ServerHost> list, InvocationClient invocationClient) {
         //- 是否相同权重
         boolean sameWeight = true;
 

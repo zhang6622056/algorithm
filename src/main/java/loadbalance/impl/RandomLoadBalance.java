@@ -1,5 +1,6 @@
 package loadbalance.impl;
 
+import loadbalance.InvocationClient;
 import loadbalance.LoadBalance;
 import loadbalance.ServerHost;
 
@@ -22,7 +23,7 @@ public class RandomLoadBalance implements LoadBalance {
 
 
     @Override
-    public ServerHost select(List<ServerHost> list) {
+    public ServerHost select(List<ServerHost> list, InvocationClient invocationClient) {
         Random random = new Random();
 
 

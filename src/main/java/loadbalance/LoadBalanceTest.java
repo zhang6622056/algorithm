@@ -1,5 +1,6 @@
 package loadbalance;
 
+import loadbalance.impl.HashLoadBalance;
 import loadbalance.impl.RandomLoadBalance;
 import loadbalance.impl.RoundRobinLoadBalance;
 
@@ -8,7 +9,7 @@ import java.util.List;
 
 public class LoadBalanceTest {
 
-    private static final List<ServerHost> list = new ArrayList<>();
+    public static final List<ServerHost> list = new ArrayList<>();
     static{
         list.add(new ServerHost("192.168.1.1:1000","192.168.1.1",1000,2));
         list.add(new ServerHost("192.168.1.2:1000","192.168.1.2",1000,2));
@@ -38,6 +39,14 @@ public class LoadBalanceTest {
 
 
         //- hash算法
+        LoadBalance loadBalance = new HashLoadBalance();
+        for (int i = 0 ; i < Integer.MAX_VALUE ; i = i+16000){
+            ServerHost serverHost = loadBalance.select(list,new InvocationClient(String.valueOf(i)));
+            System.out.println(serverHost.getId());
+        }
+
+
+
 
 
 
